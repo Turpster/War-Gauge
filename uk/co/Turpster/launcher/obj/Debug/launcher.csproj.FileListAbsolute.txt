@@ -1,0 +1,9 @@
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.exe.config
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.exe
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.pdb
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.csprojResolveAssemblyReference.cache
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.Properties.Resources.resources
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.csproj.GenerateResource.Cache
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.exe
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.pdb
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.winLauncher.resources
