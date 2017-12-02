@@ -83,6 +83,8 @@ namespace launcher
                         gameStartInfo.Arguments = "-username " + winLauncher.TxtUsername.Text + " -password " + winLauncher.TxtPassword.Text;
                         game.StartInfo = gameStartInfo;
                         game.Start();
+
+                        Application.Exit();
                     }
                     else
                     {

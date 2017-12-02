@@ -13,6 +13,7 @@ public class Window extends JFrame
 		
 		this.setSize(width, height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		Game game = new Game(args, width, height);
 		this.add(game);
 		this.setVisible(true);
