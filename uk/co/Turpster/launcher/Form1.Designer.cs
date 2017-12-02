@@ -44,7 +44,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(145, 20);
             this.txtUsername.TabIndex = 0;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
@@ -53,6 +52,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(145, 20);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // lblUsername
             // 
@@ -83,6 +83,7 @@
             this.btnPlay.TabIndex = 4;
             this.btnPlay.Text = "play";
             this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // webUpdates
             // 
@@ -92,7 +93,6 @@
             this.webUpdates.Size = new System.Drawing.Size(754, 446);
             this.webUpdates.TabIndex = 5;
             this.webUpdates.Url = new System.Uri("https://www.google.co.uk/", System.UriKind.Absolute);
-            this.webUpdates.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // pictureGameNameImage
             // 
