@@ -80,7 +80,7 @@ namespace launcher
                         System.Diagnostics.ProcessStartInfo gameStartInfo = new System.Diagnostics.ProcessStartInfo();
                         gameStartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                         gameStartInfo.FileName = "C:\\Users\\dicky\\OneDrive\\Onedrive Documents\\GitHub\\Multiplayer-Game-Java-Testing\\uk\\co\\Turpster\\client\\game\\game.jar";
-                        gameStartInfo.Arguments = "-user " + winLauncher.TxtUsername.Text + " -password " + winLauncher.TxtPassword.Text;
+                        gameStartInfo.Arguments = "-username " + winLauncher.TxtUsername.Text + " -password " + winLauncher.TxtPassword.Text;
                         game.StartInfo = gameStartInfo;
                         game.Start();
                     }
