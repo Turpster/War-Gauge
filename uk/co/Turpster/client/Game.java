@@ -4,6 +4,9 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import uk.co.Turpster.client.connection.ConnectionManager;
+import uk.co.Turpster.client.user.Session;
+
 public class Game extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = 1L;

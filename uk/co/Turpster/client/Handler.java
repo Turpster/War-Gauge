@@ -5,6 +5,8 @@ import java.awt.Graphics;
 
 public class Handler 
 {
+	
+	
 	public void tick()
 	{
 		
@@ -18,3 +20,34 @@ public class Handler
 		g.setColor(oldColor);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

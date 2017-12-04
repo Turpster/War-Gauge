@@ -1,4 +1,4 @@
-package uk.co.Turpster.client;
+package uk.co.Turpster.client.connection;
 
 public class ConnectionManager
 {
@@ -13,10 +13,10 @@ public class ConnectionManager
 	 * 2 - SPECIAL DEBUGGING MODE
 	 */
 	
-	protected static int SESSION_INVALID = 1;
-	protected static int SESSION_DEBUGGING = 2;
+	public static int SESSION_INVALID = 1;
+	public static int SESSION_DEBUGGING = 2;
 	
-	protected int getSessionID(String username, String password)
+	public int getSessionID(String username, String password)
 	{
 		/*
 		 * TODO

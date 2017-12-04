@@ -1,4 +1,6 @@
-package uk.co.Turpster.client;
+package uk.co.Turpster.client.user;
+
+import uk.co.Turpster.client.connection.ConnectionManager;
 
 public class Session
 {
