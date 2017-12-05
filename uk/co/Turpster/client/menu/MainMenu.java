@@ -2,10 +2,14 @@ package uk.co.Turpster.client.menu;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import uk.co.Turpster.client.WarGauge;
@@ -14,16 +18,45 @@ public class MainMenu extends Menu
 {
 	Button joinGame, options, quit;
 
+	private Image background;
+	private Image title;
+	
 	public MainMenu()
 	{
 		defineButtons();
+
+		File backgroundFile = new File("C:\\Users\\dicky\\Desktop\\Main-Menu-Background.png");
+		File titleFile = new File("C:\\Users\\dicky\\Desktop\\Title.png");
+		
+		try
+		{
+			background = ImageIO.read(backgroundFile);
+		}
+		catch (IOException e) 
+		{
+			//TODO CHANGE
+			System.out.println(backgroundFile.getPath());
+		}
+
+		try
+		{
+			title = ImageIO.read(titleFile);
+		}
+		catch (IOException e) 
+		{
+			//TODO CHANGE
+			System.out.println(backgroundFile.getPath());
+		}
+
 	}
 
 	@Override
 	public void render(Graphics g)
 	{
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, WarGauge.WIDTH, WarGauge.HEIGHT);
+		this.renderBackground(g);
+		
+		g.drawImage(title, (WarGauge.WIDTH / 2) - (title.getWidth(null) / 2), (WarGauge.HEIGHT / 2) - (title.getHeight(null) / 2) - 200, null);
+		
 		joinGame.render(g);
 		options.render(g);
 		quit.render(g);
@@ -54,6 +87,31 @@ public class MainMenu extends Menu
 			JOptionPane.showMessageDialog(null, "Quit");
 		}
 
+	}
+
+	private void renderBackground(Graphics g)
+	{
+		if (background == null)
+		{
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, WarGauge.WIDTH, WarGauge.HEIGHT);
+		}
+		else
+		{
+			int x = 0;
+			int y = 0;
+			
+			while (x <= WarGauge.WIDTH && y <= WarGauge.HEIGHT)
+			{
+				g.drawImage(background, x, y, null);
+				x += background.getWidth(null);
+				if (x >= WarGauge.WIDTH)
+				{
+					x = 0;
+					y += background.getHeight(null);
+				}
+			}
+		}
 	}
 
 	public void defineButtons() 

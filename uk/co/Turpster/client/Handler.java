@@ -13,9 +13,9 @@ public class Handler implements MouseListener
 {
 	public LinkedList<Renderable> renderables = new LinkedList<Renderable>();
 	public LinkedList<Tickable> tickables = new LinkedList<Tickable>();
-	
 	private MenuHandler menuHandler;
 	private WarGauge warGauge;
+	
 	public Handler(WarGauge warGauge)
 	{
 		this.warGauge = warGauge;
