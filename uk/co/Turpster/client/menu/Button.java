@@ -2,143 +2,31 @@ package uk.co.Turpster.client.menu;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
 
 import uk.co.Turpster.client.Renderable;
 import uk.co.Turpster.client.Tickable;
 
-public abstract class Button implements Renderable, Tickable
+public class Button implements Renderable, Tickable
 {
 	public Rectangle buttonHitbox;
-	public Color rectangleColor = Color.white;
-	@SuppressWarnings("unused")
+	private Color rectangleColor = Color.white, textColor = Color.BLACK;
 	private boolean shadow;
-	private boolean rounded;
-	public int arcWidth, arcHeight;
+	private String text = "";
+	public int arcWidth = 0, arcHeight = 0;
 	public Font font = new Font("Comic Sans MS", Font.BOLD, 15);
-	public String text = "";
 	
-	public Button(int x, int y, int width, int height, boolean shadow)
+	public Button(int x, int y, int width, int height)
 	{
-		this.shadow = shadow;
 		buttonHitbox = new Rectangle(x, y, width, height);
-		rounded = false;
 	}
 	
-	public Button(int x, int y, int width, int height, boolean shadow, String text)
+	public Button(Rectangle buttonHitbox)
 	{
-		this.shadow = shadow;
-		buttonHitbox = new Rectangle(x, y, width, height);
-		this.text = text;
-		rounded = false;
-	}
-	
-	public Button(int x, int y, int width, int height, boolean shadow, Font font, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		buttonHitbox = new Rectangle(x, y, width, height);
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	
-	public Button(int x, int y, int width, int height, boolean shadow, String text, Font font)
-	{
-		this.shadow = shadow;
-		buttonHitbox = new Rectangle(x, y, width, height);
-		this.font = font;
-		this.text = text;
-		rounded = false;
-	}
-	
-	
-	public Button(int x, int y, int width, int height, boolean shadow, String text, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		buttonHitbox = new Rectangle(x, y, width, height);
-		this.text = text;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	public Button(int x, int y, int width, int height, boolean shadow, String text, Font font, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		buttonHitbox = new Rectangle(x, y, width, height);
-		this.text = text;
-		this.font = font;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	
-	public Button(Rectangle buttonHitbox, boolean shadow)
-	{
-		this.shadow = shadow;
 		this.buttonHitbox = buttonHitbox;
-		rounded = false;
-	}
-	
-	public Button(Rectangle buttonHitbox, boolean shadow, String text, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		this.buttonHitbox = buttonHitbox;
-		this.text = text;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	
-	public Button(Rectangle buttonHitbox, boolean shadow, String text, Font font, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		this.buttonHitbox = buttonHitbox;
-		this.text = text;
-		this.font = font;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	
-	public Button(Rectangle buttonHitbox, boolean shadow, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		this.buttonHitbox = buttonHitbox;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	public Button(Rectangle buttonHitbox, boolean shadow, Font font, int arcWidth, int arcHeight)
-	{
-		this.shadow = shadow;
-		this.buttonHitbox = buttonHitbox;
-		this.font = font;
-		this.arcWidth = arcWidth;
-		this.arcHeight = arcHeight;
-		rounded = true;
-	}
-	
-	
-	public Button(Rectangle buttonHitbox, boolean shadow, String text)
-	{
-		this.shadow = shadow;
-		this.buttonHitbox = buttonHitbox;
-		this.text = text;
-		rounded = false;
-	}
-	
-	public boolean isClicked(MouseEvent e)
-	{
-		if (e.getPoint().getX() >= buttonHitbox.getX() && e.getPoint().getX() <= buttonHitbox.getX() + buttonHitbox.getWidth())
-		{
-			if (e.getPoint().getY() >= buttonHitbox.getY() && e.getPoint().getY() <= buttonHitbox.getY() + buttonHitbox.getHeight())
-			{
-				return true;
-			}
-		}
-		return false;
+		shadow = false;
 	}
 	
 	@Override
@@ -150,24 +38,121 @@ public abstract class Button implements Renderable, Tickable
 		g.setFont(font);
 		g.setColor(rectangleColor);
 		
-		if (rounded)
-		{
+		if (arcWidth != 0 || arcHeight != 0)
 			g.fillRoundRect(buttonHitbox.x, buttonHitbox.y, buttonHitbox.width, buttonHitbox.height, arcWidth, arcHeight);
-		}
 		else
-		{
 			g.fillRect(buttonHitbox.x, buttonHitbox.y, buttonHitbox.width, buttonHitbox.height);
-		}
+		
 		
 		/*
 		 * TODO
 		 * COMPLETE SHADOWS
 		 */
 		
+		this.drawCenteredString(g, text, buttonHitbox, oldFont);
+		
+		System.out.println(font.getName());
+		
 		g.setFont(oldFont);
 		g.setColor(oldColor);
 	}
 	
+	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) 
+	{
+	    FontMetrics metrics = g.getFontMetrics(font);
+	    Color oldColor = g.getColor();
+	    g.setColor(textColor);
+	    int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+	    int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+	    g.drawString(text, x, y);
+	    g.setFont(font);
+	    g.setColor(oldColor);
+	}
+	
 	@Override
-	public abstract void tick();
+	public void tick()
+	{
+		
+	}
+	
+
+	public Rectangle getButtonHitbox() 
+	{
+		return buttonHitbox;
+	}
+
+	public void setButtonHitbox(Rectangle buttonHitbox)
+	{
+		this.buttonHitbox = buttonHitbox;
+	}
+
+	public Color getRectangleColor() 
+	{
+		return rectangleColor;
+	}
+
+	public void setRectangleColor(Color rectangleColor)
+	{
+		this.rectangleColor = rectangleColor;
+	}
+
+	public Color getTextColor()
+	{
+		return textColor;
+	}
+
+	public void setTextColor(Color textColor) 
+	{
+		this.textColor = textColor;
+	}
+
+	public boolean isShadow() 
+	{
+		return shadow;
+	}
+
+	public void setShadow(boolean shadow) 
+	{
+		this.shadow = shadow;
+	}
+
+	public String getText()
+	{
+		return text;
+	}
+
+	public void setText(String text) 
+	{
+		this.text = text;
+	}
+
+	public int getArcWidth() 
+	{
+		return arcWidth;
+	}
+
+	public void setArcWidth(int arcWidth)
+	{
+		this.arcWidth = arcWidth;
+	}
+
+	public int getArcHeight() 
+	{
+		return arcHeight;
+	}
+
+	public void setArcHeight(int arcHeight) 
+	{
+		this.arcHeight = arcHeight;
+	}
+
+	public Font getFont() 
+	{
+		return font;
+	}
+
+	public void setFont(Font font) 
+	{
+		this.font = font;
+	}
 }
