@@ -4,10 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.font.FontRenderContext;
-import java.awt.geom.Rectangle2D;
 
 import uk.co.Turpster.client.Renderable;
+import uk.co.Turpster.client.WarGauge;
 
 public class Button implements Renderable
 {
@@ -47,37 +46,13 @@ public class Button implements Renderable
 		/*
 		 * TODO
 		 * COMPLETE SHADOWS
-		 * ADD MOUSE HOVER FUNCTIONALITY
+		 * ADD MOUSE HOVER FUNCTIONALITY	
 		 */
 		
-		this.drawCenteredString(g, text, buttonHitbox, font);
+		WarGauge.drawCenteredString(g, text, buttonHitbox, font, textColor);
 		
 		g.setFont(oldFont);
 		g.setColor(oldColor);
-	}
-	
-	public void drawCenteredString(Graphics g, String s, Rectangle r, Font font) 
-	{
-		/*
-		 * IMPLEMENTED FROM SOURCE:
-		 * https://stackoverflow.com/questions/27706197/how-can-i-center-graphics-drawstring-in-java
-		 */
-		
-		FontRenderContext frc = 
-	            new FontRenderContext(null, true, true);
-
-	    Rectangle2D r2D = font.getStringBounds(s, frc);
-	    int rWidth = (int) Math.round(r2D.getWidth());
-	    int rHeight = (int) Math.round(r2D.getHeight());
-	    int rX = (int) Math.round(r2D.getX());
-	    int rY = (int) Math.round(r2D.getY());
-
-	    int a = (r.width / 2) - (rWidth / 2) - rX;
-	    int b = (r.height / 2) - (rHeight / 2) - rY;
-
-	    g.setFont(this.font);
-	    g.setColor(textColor);
-	    g.drawString(s, r.x + a, r.y + b);
 	}
 	
 
