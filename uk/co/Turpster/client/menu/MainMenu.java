@@ -28,7 +28,7 @@ public class MainMenu extends Menu
 	@Override
 	public void tick()
 	{
-
+		
 	}
 
 	public void defineButtons() 

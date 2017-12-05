@@ -35,8 +35,8 @@ public class Window extends JFrame implements ComponentListener
 	{
 		try
 		{
-			WarGauge.WIDTH = this.getWidth();
-			WarGauge.HEIGHT = this.getHeight();
+			WarGauge.WIDTH = this.getWidth() - 16;
+			WarGauge.HEIGHT = this.getHeight() - 39;
 
 			game.refreshSize();
 		}
