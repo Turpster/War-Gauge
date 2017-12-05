@@ -63,14 +63,18 @@ public class WarGauge extends Canvas implements Runnable
 		this.handler.renderables.add(menuHandler);
 		this.handler.tickables.add(menuHandler);
 	}
-
+	
+	public void refreshSize()
+	{
+		menuHandler.refreshSize();
+	}
+	
 	public synchronized void start()
 	{
 		this.initialiseGameVariables();
-
+		
 		gamethread = new Thread(this);
 		gamethread.start();
-
 		running = true;
 	}
 
