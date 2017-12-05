@@ -9,30 +9,37 @@ import uk.co.Turpster.client.WarGauge;
 
 public class MainMenu extends Menu
 {
-	@Override
-	public void render(Graphics g)
+	LinkedList<Button> renderRectangleList = new LinkedList<Button>();
+
+	public MainMenu()
 	{
-		LinkedList<Rectangle> renderRectangleList = new LinkedList<Rectangle>();
-
-		Rectangle startGame = new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) - 65, 200, 30);
-		Rectangle options = new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) - 15, 200, 30);
-		Rectangle quit = new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) + 35, 200, 30);
-
-		renderRectangleList.add(startGame);
+		Button joinGame = new Button(new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) - 65, 200, 30));
+		Button options = new Button(new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) - 15, 200, 30));
+		Button quit = new Button(new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) + 35, 200, 30));
+		
+		joinGame.setText("Join");
+		
+		options.setText("Options");
+		
+		quit.setTextColor(new Color(155, 0, 0));
+		quit.setText("Quit");
+		
+		renderRectangleList.add(joinGame);
 		renderRectangleList.add(options);
 		renderRectangleList.add(quit);
-		
-		Color oldColor = g.getColor();
+	}
+	
+	@Override
+	public void render(Graphics g)
+	{		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WarGauge.WIDTH, WarGauge.HEIGHT);
 
-		g.setColor(Color.white);
-		for (Rectangle rectangle : renderRectangleList)
+		for (Button button : renderRectangleList)
 		{	
-			
-			g.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+			button.render(g);
 		}
-		g.setColor(oldColor);
+			
 	}
 
 	@Override
