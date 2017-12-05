@@ -8,13 +8,13 @@ public class Window extends JFrame
 
 	public Window(String[] args)
 	{
-		super("Game");
+		super("War Gauge");
 		int width = 800, height = 600;
 		
 		this.setSize(width, height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		Game game = new Game(args, width, height);
+		WarGauge game = new WarGauge(args, width, height);
 		this.add(game);
 		this.setVisible(true);
 		game.start();
