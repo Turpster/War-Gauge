@@ -9,9 +9,12 @@ public class Window extends JFrame
 	public Window(String[] args)
 	{
 		super("War Gauge");
-		int width = 800, height = 600;
+		int width = 1280, height = 768;
 		
-		this.setSize(width + 16, height + 39);
+		this.setSize(width + 6, height + 29);
+//		this.setSize(width, height);
+		this.setResizable(false);
+//		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		WarGauge game = new WarGauge(args, width, height);
