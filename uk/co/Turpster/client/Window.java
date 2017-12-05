@@ -1,25 +1,67 @@
 package uk.co.Turpster.client;
 
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 import javax.swing.JFrame;
 
-public class Window extends JFrame
+public class Window extends JFrame implements ComponentListener
 {
 	private static final long serialVersionUID = 1L;
+
+	WarGauge game;
 
 	public Window(String[] args)
 	{
 		super("War Gauge");
 		int width = 1280, height = 768;
-		
-		this.setSize(width + 6, height + 29);
-//		this.setSize(width, height);
-		this.setResizable(false);
-//		this.setUndecorated(true);
+
+		this.addComponentListener(this);
+
+		this.setSize(width + 31, height + 44);
+		//		this.setSize(width, height);
+		//		this.setResizable(false);
+		//		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		WarGauge game = new WarGauge(args, width, height);
+		game = new WarGauge(args, width, height);
 		this.add(game);
 		this.setVisible(true);
 		game.start();
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) 
+	{
+		try
+		{
+			WarGauge.WIDTH = this.getWidth();
+			WarGauge.HEIGHT = this.getHeight();
+
+			game.refreshSize();
+		}
+		catch (NullPointerException ex)
+		{
+			return;
+		}
+		
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) 
+	{
+
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) 
+	{
+
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) 
+	{
+
 	}
 }
