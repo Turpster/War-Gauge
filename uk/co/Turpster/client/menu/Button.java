@@ -2,9 +2,10 @@ package uk.co.Turpster.client.menu;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
 
 import uk.co.Turpster.client.Renderable;
 import uk.co.Turpster.client.Tickable;
@@ -15,11 +16,12 @@ public class Button implements Renderable, Tickable
 	private Color rectangleColor = Color.white, textColor = Color.BLACK;
 	private boolean shadow;
 	private String text = "";
-	public int arcWidth = 0, arcHeight = 0;
-	public Font font = new Font("Comic Sans MS", Font.BOLD, 15);
+	public int arcWidth = 6, arcHeight = 6;
+	public Font font = new Font("DotumChe Pixel", Font.PLAIN, 15);
 	
 	public Button(int x, int y, int width, int height)
 	{
+		
 		buttonHitbox = new Rectangle(x, y, width, height);
 	}
 	
@@ -49,24 +51,34 @@ public class Button implements Renderable, Tickable
 		 * COMPLETE SHADOWS
 		 */
 		
-		this.drawCenteredString(g, text, buttonHitbox, oldFont);
-		
-		System.out.println(font.getName());
+		this.drawCenteredString(g, text, buttonHitbox, font);
 		
 		g.setFont(oldFont);
 		g.setColor(oldColor);
 	}
 	
-	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) 
+	public void drawCenteredString(Graphics g, String s, Rectangle r, Font font) 
 	{
-	    FontMetrics metrics = g.getFontMetrics(font);
-	    Color oldColor = g.getColor();
+		/*
+		 * IMPLEMENTED FROM SOURCE:
+		 * https://stackoverflow.com/questions/27706197/how-can-i-center-graphics-drawstring-in-java
+		 */
+		
+		FontRenderContext frc = 
+	            new FontRenderContext(null, true, true);
+
+	    Rectangle2D r2D = font.getStringBounds(s, frc);
+	    int rWidth = (int) Math.round(r2D.getWidth());
+	    int rHeight = (int) Math.round(r2D.getHeight());
+	    int rX = (int) Math.round(r2D.getX());
+	    int rY = (int) Math.round(r2D.getY());
+
+	    int a = (r.width / 2) - (rWidth / 2) - rX;
+	    int b = (r.height / 2) - (rHeight / 2) - rY;
+
+	    g.setFont(this.font);
 	    g.setColor(textColor);
-	    int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
-	    int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
-	    g.drawString(text, x, y);
-	    g.setFont(font);
-	    g.setColor(oldColor);
+	    g.drawString(s, r.x + a, r.y + b);
 	}
 	
 	@Override
