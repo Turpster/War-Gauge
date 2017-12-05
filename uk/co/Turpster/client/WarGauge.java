@@ -13,9 +13,9 @@ public class WarGauge extends Canvas implements Runnable
 	private static final long serialVersionUID = 1L;
 
 	public static int HEIGHT, WIDTH;
-
-	@SuppressWarnings("unused")
-	private Session session;
+	public static boolean notReleased = true;
+	public static String version = "In-Dev";
+	protected Session session;
 	public ConnectionManager connectionMang;
 	public boolean running = false;
 	private Thread gamethread;
@@ -58,7 +58,7 @@ public class WarGauge extends Canvas implements Runnable
 	private void initialiseGameVariables()
 	{
 		this.menuHandler = new MenuHandler(this);
-		this.handler = new Handler(menuHandler);
+		this.handler = new Handler(this);
 		
 		this.addMouseListener(handler);
 		
