@@ -1,23 +1,32 @@
 package uk.co.Turpster.client;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.util.LinkedList;
 
 public class Handler 
 {
+	public LinkedList<Renderable> renderables = new LinkedList<Renderable>();
+	public LinkedList<Tickable> tickables = new LinkedList<Tickable>();
 	
-	
-	public void tick()
+	public Handler()
 	{
 		
 	}
 	
+	public void tick()
+	{
+		for (Tickable tickable : tickables)
+		{
+			tickable.tick();
+		}
+	}
+	
 	public void render(Graphics g)
 	{
-		Color oldColor = g.getColor();
-		g.setColor(Color.red);
-		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
-		g.setColor(oldColor);
+		for (Renderable renderable : renderables)
+		{
+			renderable.render(g);
+		}
 	}
 }
 
