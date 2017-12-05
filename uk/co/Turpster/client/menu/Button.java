@@ -47,6 +47,7 @@ public class Button implements Renderable
 		/*
 		 * TODO
 		 * COMPLETE SHADOWS
+		 * ADD MOUSE HOVER FUNCTIONALITY
 		 */
 		
 		this.drawCenteredString(g, text, buttonHitbox, font);
