@@ -42,4 +42,9 @@ public class MenuHandler implements Renderable, Tickable
 			return;	
 		}
 	}
+
+	public void refreshSize()
+	{
+		mainMenu.defineButtons();
+	}
 }
