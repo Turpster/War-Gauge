@@ -5,9 +5,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import uk.co.Turpster.client.connection.ConnectionManager;
+import uk.co.Turpster.client.menu.MenuHandler;
 import uk.co.Turpster.client.user.Session;
 
-public class Game extends Canvas implements Runnable
+public class WarGauge extends Canvas implements Runnable
 {
 	private static final long serialVersionUID = 1L;
 
@@ -16,14 +17,14 @@ public class Game extends Canvas implements Runnable
 	@SuppressWarnings("unused")
 	private Session session;
 	public ConnectionManager connectionMang;
-	protected boolean running = false;
+	public boolean running = false;
 	private Thread gamethread;
+	private MenuHandler menuHandler;
 	Handler handler;
-	
 	int frames;
 	int ticks;
 
-	public Game(String[] args, int width, int height)
+	public WarGauge(String[] args, int width, int height)
 	{
 		String username = null;
 		String password = null;
@@ -50,14 +51,17 @@ public class Game extends Canvas implements Runnable
 
 		session = new Session(connectionMang, username, password);
 
-		Game.WIDTH = width;
-		Game.HEIGHT = height;
+		WarGauge.WIDTH = width;
+		WarGauge.HEIGHT = height;
 	}
 
 	private void initialiseGameVariables()
 	{
-		
 		this.handler = new Handler();
+		this.menuHandler = new MenuHandler();
+		
+		this.handler.renderables.add(menuHandler);
+		this.handler.tickables.add(menuHandler);
 	}
 
 	public synchronized void start()
@@ -112,7 +116,7 @@ public class Game extends Canvas implements Runnable
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null)
 		{
-			this.createBufferStrategy(1);
+			this.createBufferStrategy(3);
 			return;
 		}
 
