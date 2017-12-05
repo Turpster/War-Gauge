@@ -8,9 +8,8 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 import uk.co.Turpster.client.Renderable;
-import uk.co.Turpster.client.Tickable;
 
-public class Button implements Renderable, Tickable
+public class Button implements Renderable
 {
 	public Rectangle buttonHitbox;
 	private Color rectangleColor = Color.white, textColor = Color.BLACK;
@@ -21,7 +20,6 @@ public class Button implements Renderable, Tickable
 	
 	public Button(int x, int y, int width, int height)
 	{
-		
 		buttonHitbox = new Rectangle(x, y, width, height);
 	}
 	
@@ -79,12 +77,6 @@ public class Button implements Renderable, Tickable
 	    g.setFont(this.font);
 	    g.setColor(textColor);
 	    g.drawString(s, r.x + a, r.y + b);
-	}
-	
-	@Override
-	public void tick()
-	{
-		
 	}
 	
 
