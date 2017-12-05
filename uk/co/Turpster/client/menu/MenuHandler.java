@@ -1,9 +1,11 @@
 package uk.co.Turpster.client.menu;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 
 import uk.co.Turpster.client.Renderable;
 import uk.co.Turpster.client.Tickable;
+import uk.co.Turpster.client.WarGauge;
 
 public class MenuHandler implements Renderable, Tickable 
 {
@@ -11,8 +13,11 @@ public class MenuHandler implements Renderable, Tickable
 	
 	MainMenu mainMenu;
 	
-	public MenuHandler() 
+	WarGauge warGuage;
+	
+	public MenuHandler(WarGauge warGuage) 
 	{
+		this.warGuage = warGuage;
 		mainMenu = new MainMenu();
 		menuType = MenuType.MAIN;
 	}
@@ -46,5 +51,23 @@ public class MenuHandler implements Renderable, Tickable
 	public void refreshSize()
 	{
 		mainMenu.defineButtons();
+	}
+
+	public void click(MouseEvent e) 
+	{
+		switch(menuType)
+		{
+		case MAIN:
+			mainMenu.click(e);
+		case PAUSE:
+		
+		case GRAPHICS:
+		
+		case OPTIONS:
+			
+		
+		default:
+			return;	
+		}
 	}
 }

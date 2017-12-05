@@ -24,11 +24,11 @@ public class Session
 	
 	public boolean validate()
 	{
-		
 		/*
 		 * TODO
 		 * Check if ID is not invalid from server side
 		 */
+		
 		return false;
 	}
 }

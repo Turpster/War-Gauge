@@ -19,7 +19,7 @@ public class WarGauge extends Canvas implements Runnable
 	public ConnectionManager connectionMang;
 	public boolean running = false;
 	private Thread gamethread;
-	private MenuHandler menuHandler;
+	MenuHandler menuHandler;
 	Handler handler;
 	int frames;
 	int ticks;
@@ -57,8 +57,10 @@ public class WarGauge extends Canvas implements Runnable
 
 	private void initialiseGameVariables()
 	{
-		this.handler = new Handler();
-		this.menuHandler = new MenuHandler();
+		this.menuHandler = new MenuHandler(this);
+		this.handler = new Handler(menuHandler);
+		
+		this.addMouseListener(handler);
 		
 		this.handler.renderables.add(menuHandler);
 		this.handler.tickables.add(menuHandler);

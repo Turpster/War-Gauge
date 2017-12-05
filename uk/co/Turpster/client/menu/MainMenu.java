@@ -2,7 +2,11 @@ package uk.co.Turpster.client.menu;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 
 import uk.co.Turpster.client.WarGauge;
 
@@ -28,7 +32,28 @@ public class MainMenu extends Menu
 	@Override
 	public void tick()
 	{
-		
+
+	}
+
+	public void click(MouseEvent e)
+	{
+		Point point = e.getPoint();
+
+		Rectangle recPoint = new Rectangle(point.x, point.y, 1, 1);
+
+		if (recPoint.intersects(joinGame.buttonHitbox))
+		{
+			JOptionPane.showMessageDialog(null, "Join");
+		}
+		if (recPoint.intersects(options.buttonHitbox))
+		{
+			JOptionPane.showMessageDialog(null, "Options");
+		}
+		if (recPoint.intersects(quit.buttonHitbox))
+		{
+			JOptionPane.showMessageDialog(null, "Quit");
+		}
+
 	}
 
 	public void defineButtons() 
