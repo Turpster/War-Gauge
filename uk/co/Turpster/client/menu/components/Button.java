@@ -1,4 +1,4 @@
-package uk.co.Turpster.client.menu;
+package uk.co.Turpster.client.menu.components;
 
 import java.awt.Color;
 import java.awt.Font;
