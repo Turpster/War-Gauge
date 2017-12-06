@@ -99,13 +99,14 @@
             this.webUpdates.Name = "webUpdates";
             this.webUpdates.Size = new System.Drawing.Size(778, 459);
             this.webUpdates.TabIndex = 5;
-            this.webUpdates.Url = new System.Uri("https://turpster.github.io/War-Gauge/", System.UriKind.Absolute);
+            this.webUpdates.Url = new System.Uri("http://turpster.github.io/War-Gauge/", System.UriKind.Absolute);
             // 
             // picGameNameImage
             // 
             this.picGameNameImage.BackColor = System.Drawing.Color.Transparent;
             this.picGameNameImage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picGameNameImage.ImageLocation = "C:\\Users\\dicky\\Desktop\\Title-launcher.png";
+            this.picGameNameImage.ImageLocation = "C:\\Users\\dicky\\OneDrive\\Onedrive Documents\\GitHub\\Multiplayer-Game-Java-Testing\\u" +
+    "k\\co\\Turpster\\launcher\\bin\\Debug\\assets\\Title-launcher.png";
             this.picGameNameImage.Location = new System.Drawing.Point(12, 467);
             this.picGameNameImage.Name = "picGameNameImage";
             this.picGameNameImage.Size = new System.Drawing.Size(293, 50);

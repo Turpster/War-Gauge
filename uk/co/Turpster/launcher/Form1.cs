@@ -33,6 +33,7 @@ namespace launcher
         {
             this.launcher = new Launcher(this);
             InitializeComponent();
+            this.webUpdates.Refresh();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace launcher
                         System.Diagnostics.Process game = new System.Diagnostics.Process();
                         System.Diagnostics.ProcessStartInfo gameStartInfo = new System.Diagnostics.ProcessStartInfo();
                         gameStartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                        gameStartInfo.FileName = "C:\\Users\\dicky\\OneDrive\\Onedrive Documents\\GitHub\\Multiplayer-Game-Java-Testing\\uk\\co\\Turpster\\client\\game\\game.jar";
+                        gameStartInfo.FileName = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\game\\game.jar";
                         gameStartInfo.Arguments = "-username " + winLauncher.TxtUsername.Text + " -password " + winLauncher.TxtPassword.Text;
                         game.StartInfo = gameStartInfo;
                         game.Start();
