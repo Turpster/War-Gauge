@@ -37,9 +37,14 @@ public class MainMenu extends Menu
 		 * TODO
 		 * CHANGE FILE LOCATION TO ASSET FOLDER
 		 */
-		File backgroundFile = new File("C:\\Users\\dicky\\Desktop\\Main-Menu-Background.png");
-		File titleFile = new File("C:\\Users\\dicky\\Desktop\\Title.png");
+		File backgroundFile = null;
+		File titleFile = null;
+		backgroundFile = new File(new File("").getAbsolutePath() + "\\assets\\Main-Menu-Background.png");
+		titleFile = new File(new File("").getAbsolutePath() + "\\assets\\Title.png");
 
+		
+		System.out.println(backgroundFile.getAbsolutePath());
+		System.out.println(titleFile.getAbsolutePath());
 		try
 		{
 			background = ImageIO.read(backgroundFile);

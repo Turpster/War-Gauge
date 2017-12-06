@@ -7,3 +7,7 @@ C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.exe
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.pdb
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.winLauncher.resources
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.exe.manifest
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.application
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.exe.manifest
+C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.application

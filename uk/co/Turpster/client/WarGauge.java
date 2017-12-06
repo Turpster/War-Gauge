@@ -30,7 +30,7 @@ public class WarGauge extends Canvas implements Runnable
 	int ticks;
 
 	public WarGauge(String[] args, int width, int height)
-	{
+	{		
 		String username = null;
 		String password = null;
 
