@@ -65,13 +65,13 @@ public class Handler implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
-		menuHandler.click(e);
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
-		
+		menuHandler.click(e);		
 	}
 
 	@Override
