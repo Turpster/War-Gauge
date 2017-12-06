@@ -1,6 +1,7 @@
 package uk.co.Turpster.client.menu;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -13,6 +14,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import uk.co.Turpster.client.WarGauge;
+import uk.co.Turpster.client.menu.components.Button;
+import uk.co.Turpster.client.user.Session;
 
 public class MainMenu extends Menu
 {
@@ -20,14 +23,23 @@ public class MainMenu extends Menu
 
 	private Image background;
 	private Image title;
-	
-	public MainMenu()
+
+	private Session session;
+
+	public MainMenu(MenuHandler handler, Session session)
 	{
+		super(handler);
+		this.session = session;
+
 		defineButtons();
 
+		/*
+		 * TODO
+		 * CHANGE FILE LOCATION TO ASSET FOLDER
+		 */
 		File backgroundFile = new File("C:\\Users\\dicky\\Desktop\\Main-Menu-Background.png");
 		File titleFile = new File("C:\\Users\\dicky\\Desktop\\Title.png");
-		
+
 		try
 		{
 			background = ImageIO.read(backgroundFile);
@@ -54,9 +66,10 @@ public class MainMenu extends Menu
 	public void render(Graphics g)
 	{
 		this.renderBackground(g);
-		
+		this.renderPlayerInfo(g);
+
 		g.drawImage(title, (WarGauge.WIDTH / 2) - (title.getWidth(null) / 2), (WarGauge.HEIGHT / 2) - (title.getHeight(null) / 2) - 200, null);
-		
+
 		joinGame.render(g);
 		options.render(g);
 		quit.render(g);
@@ -76,20 +89,51 @@ public class MainMenu extends Menu
 
 		if (recPoint.intersects(joinGame.buttonHitbox))
 		{
+			handler.menuType = MenuType.NONE;
 			JOptionPane.showMessageDialog(null, "Join");
 		}
 		if (recPoint.intersects(options.buttonHitbox))
 		{
-			JOptionPane.showMessageDialog(null, "Options");
+			MenuHandler.paused = true;
 		}
 		if (recPoint.intersects(quit.buttonHitbox))
 		{
-			JOptionPane.showMessageDialog(null, "Quit");
+			/*
+			 * TODO
+			 * Tell if the user is sure he - she wants to exit
+			 */
+			System.exit(0);
 		}
-
 	}
 
-	private void renderBackground(Graphics g)
+	private void renderPlayerInfo(Graphics g)
+	{
+		/*
+		 * TODO
+		 * ADD PLAYER MODEL IMAGE
+		 */
+
+		Font oldFont = g.getFont();
+		Color oldColor = g.getColor();
+
+		g.setFont(new Font("DotumChe Pixel", Font.PLAIN, 13));
+		g.setColor(Color.WHITE);
+		g.drawString("You are logged into: ", (WarGauge.WIDTH) - 320, 25);
+		if (session.validate())
+		{
+			g.setColor(new Color(100, 255, 155));
+		}
+		else
+		{
+			g.setColor(new Color(255, 155, 100));
+		}
+		
+		WarGauge.drawCenteredString(g, session.username, new Rectangle(WarGauge.WIDTH - 281, 33, 100, 10), g.getFont(), g.getColor());
+		g.setColor(oldColor);
+		g.setFont(oldFont);
+	}
+
+	public void renderBackground(Graphics g)
 	{
 		if (background == null)
 		{
@@ -100,7 +144,7 @@ public class MainMenu extends Menu
 		{
 			int x = 0;
 			int y = 0;
-			
+
 			while (x <= WarGauge.WIDTH && y <= WarGauge.HEIGHT)
 			{
 				g.drawImage(background, x, y, null);
@@ -113,7 +157,8 @@ public class MainMenu extends Menu
 			}
 		}
 	}
-
+	
+	@Override
 	public void defineButtons() 
 	{
 		joinGame = new Button(new Rectangle((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT / 2) - 65, 200, 30));
