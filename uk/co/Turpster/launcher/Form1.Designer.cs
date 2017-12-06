@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winLauncher));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.webUpdates = new System.Windows.Forms.WebBrowser();
-            this.pictureGameNameImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGameNameImage)).BeginInit();
+            this.picGameNameImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picGameNameImage)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -57,6 +58,8 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
             this.lblUsername.Location = new System.Drawing.Point(424, 467);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
@@ -67,6 +70,8 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
+            this.lblPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lblPassword.ForeColor = System.Drawing.Color.White;
             this.lblPassword.Location = new System.Drawing.Point(426, 493);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
@@ -76,38 +81,44 @@
             // 
             // btnPlay
             // 
+            this.btnPlay.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPlay.Font = new System.Drawing.Font("Alegreya Sans SC", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.Location = new System.Drawing.Point(636, 464);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(130, 46);
             this.btnPlay.TabIndex = 4;
             this.btnPlay.Text = "play";
-            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.UseVisualStyleBackColor = false;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // webUpdates
             // 
-            this.webUpdates.Location = new System.Drawing.Point(12, 12);
+            this.webUpdates.Location = new System.Drawing.Point(0, -1);
             this.webUpdates.MinimumSize = new System.Drawing.Size(20, 20);
             this.webUpdates.Name = "webUpdates";
-            this.webUpdates.Size = new System.Drawing.Size(754, 446);
+            this.webUpdates.Size = new System.Drawing.Size(778, 459);
             this.webUpdates.TabIndex = 5;
-            this.webUpdates.Url = new System.Uri("https://www.google.co.uk/", System.UriKind.Absolute);
+            this.webUpdates.Url = new System.Uri("https://turpster.github.io/War-Gauge/", System.UriKind.Absolute);
             // 
-            // pictureGameNameImage
+            // picGameNameImage
             // 
-            this.pictureGameNameImage.Location = new System.Drawing.Point(12, 467);
-            this.pictureGameNameImage.Name = "pictureGameNameImage";
-            this.pictureGameNameImage.Size = new System.Drawing.Size(193, 50);
-            this.pictureGameNameImage.TabIndex = 6;
-            this.pictureGameNameImage.TabStop = false;
+            this.picGameNameImage.BackColor = System.Drawing.Color.Transparent;
+            this.picGameNameImage.Cursor = System.Windows.Forms.Cursors.Default;
+            this.picGameNameImage.ImageLocation = "C:\\Users\\dicky\\Desktop\\Title-launcher.png";
+            this.picGameNameImage.Location = new System.Drawing.Point(12, 467);
+            this.picGameNameImage.Name = "picGameNameImage";
+            this.picGameNameImage.Size = new System.Drawing.Size(293, 50);
+            this.picGameNameImage.TabIndex = 6;
+            this.picGameNameImage.TabStop = false;
             // 
             // winLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(778, 522);
-            this.Controls.Add(this.pictureGameNameImage);
+            this.Controls.Add(this.picGameNameImage);
             this.Controls.Add(this.webUpdates);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.lblPassword);
@@ -115,9 +126,10 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "winLauncher";
-            this.Text = "Turpster";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGameNameImage)).EndInit();
+            this.Text = "War Gauge";
+            ((System.ComponentModel.ISupportInitialize)(this.picGameNameImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,7 +143,7 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.WebBrowser webUpdates;
-        private System.Windows.Forms.PictureBox pictureGameNameImage;
+        private System.Windows.Forms.PictureBox picGameNameImage;
     }
 }
 
