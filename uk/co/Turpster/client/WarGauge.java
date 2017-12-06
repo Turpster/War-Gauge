@@ -50,7 +50,7 @@ public class WarGauge extends Canvas implements Runnable
 		}
 		if (username == null || password == null)
 		{
-			System.exit(1);
+			System.exit(0);
 		}
 		connectionMang = new ConnectionManager();
 
