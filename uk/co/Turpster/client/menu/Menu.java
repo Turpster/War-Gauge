@@ -13,6 +13,13 @@ public abstract class Menu implements Tickable, Renderable
 	
 	@Override
 	public abstract void render(Graphics g);
-	
 	public abstract void click(MouseEvent e);
+	public abstract void defineButtons();
+	
+	protected MenuHandler handler;
+	
+	public Menu(MenuHandler handler)
+	{
+		this.handler = handler;
+	}
 }
