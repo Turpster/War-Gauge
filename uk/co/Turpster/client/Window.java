@@ -1,8 +1,12 @@
 package uk.co.Turpster.client;
 
+import java.awt.Image;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Window extends JFrame implements ComponentListener
@@ -10,7 +14,7 @@ public class Window extends JFrame implements ComponentListener
 	private static final long serialVersionUID = 1L;
 
 	WarGauge game;
-
+	
 	public Window(String[] args)
 	{
 		super("War Gauge");
@@ -18,6 +22,18 @@ public class Window extends JFrame implements ComponentListener
 
 		this.addComponentListener(this);
 
+		Image icon = null;
+		try 
+		{
+			icon = ImageIO.read(new File("C:\\Users\\dicky\\Desktop\\icon.png"));
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		this.setIconImage(icon);
+		
 		this.setSize(width + 31, height + 44);
 		//		this.setSize(width, height);
 		//		this.setResizable(false);
