@@ -86,7 +86,7 @@ public class MenuHandler implements Renderable, Tickable
 		mainMenu.defineButtons();
 	}
 
-	public void click(MouseEvent e) 
+	public void mouseClick(MouseEvent e) 
 	{
 		if (menuType == MenuType.MAIN)
 		{
@@ -94,25 +94,114 @@ public class MenuHandler implements Renderable, Tickable
 			{
 				if (optionMenu == OptionsMenuType.MAIN)
 				{
-					optionsMenu.click(e);
+					optionsMenu.mouseClick(e);
 				}
 				else if (optionMenu == OptionsMenuType.GAMEPLAY)
 				{
-					optionsGameplay.click(e);
+					optionsGameplay.mouseClick(e);
 				}
 				else if (optionMenu == OptionsMenuType.GRAPHICS)
 				{
-					optionsGraphics.click(e);
+					optionsGraphics.mouseClick(e);
 				}
 				else if (optionMenu == OptionsMenuType.PLAYEROPTIONS)
 				{
-					optionsPlayerMenu.click(e);
+					optionsPlayerMenu.mouseClick(e);
 				}
 			}
 			else
 			{
-				mainMenu.click(e);
+				mainMenu.mouseClick(e);
 			}
 		}
 	}
+	
+	public void mousePress(MouseEvent e)
+	{
+		if (menuType == MenuType.MAIN)
+		{
+			if (paused)
+			{
+				if (optionMenu == OptionsMenuType.MAIN)
+				{
+					optionsMenu.mousePress(e);
+				}
+				else if (optionMenu == OptionsMenuType.GAMEPLAY)
+				{
+					optionsGameplay.mousePress(e);
+				}
+				else if (optionMenu == OptionsMenuType.GRAPHICS)
+				{
+					optionsGraphics.mousePress(e);
+				}
+				else if (optionMenu == OptionsMenuType.PLAYEROPTIONS)
+				{
+					optionsPlayerMenu.mousePress(e);
+				}
+			}
+			else
+			{
+				mainMenu.mousePress(e);
+			}
+		}
+	}
+	public void mouseReleased(MouseEvent e)
+	{
+		if (menuType == MenuType.MAIN)
+		{
+			if (paused)
+			{
+				if (optionMenu == OptionsMenuType.MAIN)
+				{
+					optionsMenu.mouseRelease(e);
+				}
+				else if (optionMenu == OptionsMenuType.GAMEPLAY)
+				{
+					optionsGameplay.mouseRelease(e);
+				}
+				else if (optionMenu == OptionsMenuType.GRAPHICS)
+				{
+					optionsGraphics.mouseRelease(e);
+				}
+				else if (optionMenu == OptionsMenuType.PLAYEROPTIONS)
+				{
+					optionsPlayerMenu.mouseRelease(e);
+				}
+			}
+			else
+			{
+				mainMenu.mouseRelease(e);
+			}
+		}
+	}
+	public void mouseUpdate(MouseEvent e)
+	{
+		if (menuType == MenuType.MAIN)
+		{
+			if (paused)
+			{
+				if (optionMenu == OptionsMenuType.MAIN)
+				{
+					optionsMenu.mouseUpdate(e);
+				}
+				else if (optionMenu == OptionsMenuType.GAMEPLAY)
+				{
+					optionsGameplay.mouseUpdate(e);
+				}
+				else if (optionMenu == OptionsMenuType.GRAPHICS)
+				{
+					optionsGraphics.mouseUpdate(e);
+				}
+				else if (optionMenu == OptionsMenuType.PLAYEROPTIONS)
+				{
+					optionsPlayerMenu.mouseUpdate(e);
+				}
+			}
+			else
+			{
+				mainMenu.mouseUpdate(e);
+			}
+		}
+	}
+	
 }

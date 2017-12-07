@@ -86,7 +86,7 @@ public class MainMenu extends Menu
 
 	}
 
-	public void click(MouseEvent e)
+	public void mouseClick(MouseEvent e)
 	{
 		Point point = e.getPoint();
 

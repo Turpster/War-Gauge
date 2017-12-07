@@ -5,11 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
 
 import uk.co.Turpster.client.menu.MenuHandler;
 
-public class Handler implements MouseListener
+public class Handler implements MouseListener, MouseMotionListener
 {
 	public LinkedList<Renderable> renderables = new LinkedList<Renderable>();
 	public LinkedList<Tickable> tickables = new LinkedList<Tickable>();
@@ -65,31 +66,44 @@ public class Handler implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
-		
+		return;
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) 
 	{
-		menuHandler.click(e);		
+		menuHandler.mouseClick(e);		
+		menuHandler.mousePress(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent e) 
+	{
+		menuHandler.mouseReleased(e);
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseEntered(MouseEvent e) 
+	{
+		return;
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseExited(MouseEvent e) 
+	{
+		return;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e)
+	{
+		menuHandler.mouseUpdate(e);
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) 
+	{
+		return;
 	}
 }
 

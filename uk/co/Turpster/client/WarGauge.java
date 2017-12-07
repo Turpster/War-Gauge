@@ -66,6 +66,7 @@ public class WarGauge extends Canvas implements Runnable
 		this.handler = new Handler(this);
 		
 		this.addMouseListener(handler);
+		this.addMouseMotionListener(handler);
 		
 		this.handler.renderables.add(menuHandler);
 		this.handler.tickables.add(menuHandler);

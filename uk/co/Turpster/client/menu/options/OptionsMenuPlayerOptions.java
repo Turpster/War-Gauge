@@ -35,7 +35,7 @@ public class OptionsMenuPlayerOptions extends Menu
 	}
 
 	@Override
-	public void click(MouseEvent e) 
+	public void mouseClick(MouseEvent e) 
 	{
 		Rectangle point = new Rectangle(e.getX(), e.getY(), 1, 1);
 		
