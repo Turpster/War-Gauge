@@ -1,27 +1,23 @@
-package uk.co.Turpster.client.menu.components;
+package uk.co.Turpster.client.user;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
+import uk.co.Turpster.client.menu.components.Button;
+
 public class Slider extends Button
 {
-	public Rectangle sliderHitBox;
-
+	private Rectangle sliderHitBox;
 	private Rectangle slider;
 	
 	//floats 0 to 1 only
 	private float percentage;
 	
-	int sliderWidth;
-	
 	public Slider(int x, int y, int width, int height) 
 	{
-		super(x, y, (int) (width * 0.333333333), height);
-		
-		sliderWidth = (int) (width * 0.666666666);
-		
+		super(x, y, width, height);
 		makeRectangles();
 	}
 	
@@ -51,8 +47,8 @@ public class Slider extends Button
 		
 		super.setText("Render Speed");
 		
-		sliderHitBox = new Rectangle(super.buttonHitbox.x + super.buttonHitbox.width, super.buttonHitbox.y, sliderWidth, super.buttonHitbox.height - 1);
-		slider = new Rectangle((int)((super.buttonHitbox.x + super.buttonHitbox.width) + ((super.buttonHitbox.width * 2) * percentage)), 500, 5, (int) sliderHitBox.getHeight());	
+		sliderHitBox = new Rectangle(super.buttonHitbox.x + (super.buttonHitbox.width / 1), super.buttonHitbox.y, super.buttonHitbox.width * 2, super.buttonHitbox.height - 1);
+		slider = new Rectangle((int)((super.buttonHitbox.x + super.buttonHitbox.width) + ((super.buttonHitbox.width * 2) * percentage)), 500, 5, 30);	
 	}
 	
 	public void mouseClick(MouseEvent e)
@@ -61,9 +57,10 @@ public class Slider extends Button
 		
 		if (point.intersects(sliderHitBox))
 		{
-			int selectedPercentagePixel = (int) (point.getX() - sliderWidth);
-			this.percentage = (float) selectedPercentagePixel / sliderWidth - 1f;
+			int selectedPercentagePixel = (int) (point.getX() - sliderHitBox.getWidth());
+			this.percentage = (float) (selectedPercentagePixel / sliderHitBox.getWidth() - 0.75f);	
 		}
+		
 	}
 	
 	public void mouseUpdate(MouseEvent e)
@@ -72,9 +69,11 @@ public class Slider extends Button
 		
 		if (point.intersects(sliderHitBox))
 		{
-			int selectedPercentagePixel = (int) (point.getX() - sliderWidth);
-			this.percentage = (float) selectedPercentagePixel / sliderWidth - 1f;
+			int selectedPercentagePixel = (int) (point.getX() - sliderHitBox.getWidth());
+			this.percentage = (float) (selectedPercentagePixel / sliderHitBox.getWidth() - 0.75f);	
 		}
+		
+		
 	}
 	
 	public float getPercentage() 
@@ -94,16 +93,5 @@ public class Slider extends Button
 		}
 		this.percentage = percentage;
 	}
-	
-	public Rectangle getSliderHitBox() 
-	{
-		return sliderHitBox;
-	}
-
-	public void setSliderHitBox(Rectangle sliderHitBox) 
-	{
-		this.sliderHitBox = sliderHitBox;
-	}
-
 	
 }
