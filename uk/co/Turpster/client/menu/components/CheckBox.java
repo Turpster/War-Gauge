@@ -14,7 +14,7 @@ public class CheckBox extends Button
 
 	private Rectangle checkHitbox;
 	private Color checkBoxColor = Color.LIGHT_GRAY;
-	private Color checkColor = new Color(200, 0, 0);
+	private Color checkColor = new Color(120, 120, 255);
 	private boolean check = false;
 
 	public CheckBox(int x, int y, int width, int height) 
@@ -96,8 +96,6 @@ public class CheckBox extends Button
 
 		if (check)
 		{
-			checkColor = new Color(255, 50, 50);
-			
 			WarGauge.drawCenteredString(g, "\u2713", this.checkHitbox, new Font("null", Font.PLAIN, 37), checkColor);
 		}
 		g.setColor(oldColor);

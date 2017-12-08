@@ -34,14 +34,24 @@ public class Slider extends Button
 		
 		g.setColor(super.getRectangleColor());
 		g.drawRect(sliderHitBox.x, sliderHitBox.y, sliderHitBox.width, sliderHitBox.height);
-		Color color = new Color((float) super.getRectangleColor().getRed() / 255, (float) super.getRectangleColor().getGreen() / 255, (float) super.getRectangleColor().getRed() / 255, 0.5f);
+		Color color = new Color((float) super.getRectangleColor().getRed() / 255, (float) super.getRectangleColor().getGreen() / 255, (float) super.getRectangleColor().getRed() / 255, 0.15f);
+//		color = new Color((float) 40 / 255, (float) 55 / 255, (float) 200 / 255, 0.4f);
 		g.setColor(color);
 		g.fillRect(sliderHitBox.x, sliderHitBox.y, sliderHitBox.width, sliderHitBox.height);
 		
 		color = new Color((float) super.getRectangleColor().getRed() / 255, (float) super.getRectangleColor().getGreen() / 255, (float) super.getRectangleColor().getRed() / 255, 1f);
-		color.darker();
+		
+		color = color.darker();
+		color = color.darker();
+		
 		g.setColor(color);
 		g.fillRect(slider.x, slider.y, slider.width, slider.height);
+		
+		color = color.brighter();
+		
+		g.setColor(color);
+		g.drawRect(slider.x, slider.y, slider.width, slider.height);
+		
 	}
 	
 	private void makeRectangles()

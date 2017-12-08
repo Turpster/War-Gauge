@@ -25,7 +25,7 @@ public class MainMenu extends Menu
 	private Image title;
 
 	private Session session;
-
+	
 	public MainMenu(MenuHandler handler, Session session)
 	{
 		super(handler);

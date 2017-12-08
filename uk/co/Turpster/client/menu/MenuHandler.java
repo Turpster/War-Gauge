@@ -18,8 +18,8 @@ public class MenuHandler implements Renderable, Tickable
 	public MenuType menuType;
 	public static boolean paused = false;
 	MainMenu mainMenu;
-	OptionsMenuMain optionsMenu;
-		public OptionsMenuType optionMenu = OptionsMenuType.MAIN;
+	public OptionsMenuType optionMenu = OptionsMenuType.MAIN;
+		OptionsMenuMain optionsMenu;
 		OptionsMenuGameplay optionsGameplay;
 		OptionsMenuGraphics optionsGraphics;
 		OptionsMenuPlayerOptions optionsPlayerMenu;
