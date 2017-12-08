@@ -102,8 +102,6 @@ public class CheckBox extends Button
 		}
 		g.setColor(oldColor);
 		
-		this.clickBoxText = "This is a test";
-		
 		WarGauge.drawCenteredString(g, this.getText(), new Rectangle((int) (buttonHitbox.x + (checkHitbox.getWidth() - 9)), buttonHitbox.y - 1, buttonHitbox.width, buttonHitbox.height), this.font, this.getTextColor());
 	}
 }
