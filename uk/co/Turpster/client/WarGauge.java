@@ -3,11 +3,15 @@ package uk.co.Turpster.client;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
+import java.io.File;
+import java.io.IOException;
 
 import uk.co.Turpster.client.connection.ConnectionManager;
 import uk.co.Turpster.client.menu.MenuHandler;
@@ -30,7 +34,9 @@ public class WarGauge extends Canvas implements Runnable
 	int ticks;
 
 	public WarGauge(String[] args, int width, int height)
-	{		
+	{
+		this.registerFonts();
+		
 		String username = null;
 		String password = null;
 
@@ -157,7 +163,20 @@ public class WarGauge extends Canvas implements Runnable
 	{
 		new Window(args);
 	}
-
+	
+	private void registerFonts()
+	{
+		try
+		{
+		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("assets\\DotumChe-Pixel.ttf")));
+		}
+		catch (IOException | FontFormatException e) 
+		{
+			
+		}
+	}
+	
 	public static void drawCenteredString(Graphics g, String s, Rectangle r, Font font, Color textColor) 
 	{
 		/*
