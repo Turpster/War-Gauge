@@ -16,7 +16,6 @@ public class OptionsMenuGraphics extends Menu
 {
 	Button back;
 	Slider slider;
-	CheckBox checkBox;
 
 	CheckBox fullscreen;
 
@@ -38,7 +37,6 @@ public class OptionsMenuGraphics extends Menu
 	{
 		back.render(g);
 		slider.render(g);
-		checkBox.render(g);
 		fullscreen.render(g);
 	}
 
@@ -60,10 +58,8 @@ public class OptionsMenuGraphics extends Menu
 		{
 			this.handler.optionMenu = OptionsMenuType.MAIN;
 		}
-		if (point.intersects(checkBox.getButtonHitbox()))
 		if (point.intersects(fullscreen.getButtonHitbox()))
 		{
-			checkBox.mouseClick(e);
 			fullscreen.mouseClick(e);
 			
 			/*
@@ -74,7 +70,6 @@ public class OptionsMenuGraphics extends Menu
 			handler.setFullscreen(fullscreen.isChecked());
 		}
 	}
-
 
 	@Override
 	public void defineButtons() 
@@ -103,10 +98,6 @@ public class OptionsMenuGraphics extends Menu
 		slider = new Slider(500, 500, 500, 30);
 		slider.setArcHeight(5);
 		slider.setArcWidth(5);
-		slider.setRectangleColor(new Color(250, 249, 215));
-		
-		checkBox = new CheckBox((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT) - 400, 200, 30);
 		slider.setPercentage(percentage);
 	}
-
 }
