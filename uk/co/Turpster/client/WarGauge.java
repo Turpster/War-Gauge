@@ -14,6 +14,8 @@ import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+
 import uk.co.Turpster.client.connection.ConnectionManager;
 import uk.co.Turpster.client.menu.MenuHandler;
 import uk.co.Turpster.client.user.Session;
@@ -34,10 +36,10 @@ public class WarGauge extends Canvas implements Runnable
 	int frames;
 	int ticks;
 
-	public WarGauge(String[] args, int width, int height)
+	private Window window;
+	
+	public WarGauge(String[] args, int width, int height, Window window)
 	{
-		this.registerFonts();
-		
 		String username = null;
 		String password = null;
 
@@ -59,6 +61,13 @@ public class WarGauge extends Canvas implements Runnable
 		{
 			System.exit(0);
 		}
+		
+		/*
+		 * SETS HERE
+		 */
+		this.window = window;
+		this.registerFonts();
+		
 		connectionMang = new ConnectionManager();
 
 		session = new Session(connectionMang, username, password);
@@ -235,11 +244,15 @@ public class WarGauge extends Canvas implements Runnable
 	{
 		if (checked)
 		{
-			
+			/*
+			 * TODO
+			 * Complete actual fullscreen borderless
+			 */
+			window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		}
 		else
 		{
-			
+			window.setExtendedState(JFrame.NORMAL);
 		}
 	}
 }
