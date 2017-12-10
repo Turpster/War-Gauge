@@ -18,6 +18,8 @@ public class OptionsMenuGraphics extends Menu
 	Slider slider;
 	CheckBox checkBox;
 
+	CheckBox fullscreen;
+
 	public OptionsMenuGraphics(MenuHandler handler) 
 	{
 		super(handler);
@@ -37,6 +39,7 @@ public class OptionsMenuGraphics extends Menu
 		back.render(g);
 		slider.render(g);
 		checkBox.render(g);
+		fullscreen.render(g);
 	}
 
 	public void mouseUpdate(MouseEvent e)
@@ -60,6 +63,14 @@ public class OptionsMenuGraphics extends Menu
 		if (point.intersects(checkBox.getButtonHitbox()))
 		{
 			checkBox.mouseClick(e);
+			fullscreen.mouseClick(e);
+			
+			/*
+			 * TODO
+			 * Set fullscreen
+			 */
+			
+			handler.setFullscreen(fullscreen.isChecked());
 		}
 	}
 
@@ -71,6 +82,9 @@ public class OptionsMenuGraphics extends Menu
 		back.setTextColor(new Color(155, 0, 0));
 		back.setText("Back");
 
+		fullscreen = new CheckBox(WarGauge.getMiddleX(250) + 170, WarGauge.getMiddleY(30) - 110, 250, 30);
+		//		fullscreen = new CheckBox(WarGauge.getMiddleX((int) fullscreen.buttonHitbox.getWidth()) + 220, WarGauge.getMiddleY((int) fullscreen.buttonHitbox.getHeight()) - 230, (int) fullscreen.buttonHitbox.getWidth() + 100, (int) fullscreen.buttonHitbox.getHeight());
+		fullscreen.setText("Fullscreen");
 		slider = new Slider(500, 500, 500, 30);
 		slider.setArcHeight(5);
 		slider.setArcWidth(5);
