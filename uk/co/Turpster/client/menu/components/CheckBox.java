@@ -13,7 +13,7 @@ public class CheckBox extends Button
 	private String clickBoxText = "";
 
 	private Rectangle checkHitbox;
-	private Color checkBoxColor = Color.LIGHT_GRAY;
+	private Color checkBoxColor = new Color(80, 120, 255);
 	private Color checkColor = new Color(120, 120, 255);
 	private boolean check = false;
 
@@ -35,8 +35,8 @@ public class CheckBox extends Button
 
 		int checkWidth = checkHeight;
 
-		int x = (int)(super.buttonHitbox.getX() + 3);
-		int y = (int)(super.buttonHitbox.getY() + 3);
+		int x = (int)(super.buttonHitbox.getX() + 4);
+		int y = (int)(super.buttonHitbox.getY() + 4);
 
 		if (checkWidth > this.buttonHitbox.width)
 		{
@@ -50,6 +50,11 @@ public class CheckBox extends Button
 	public boolean isChecked()
 	{
 		return check;
+	}
+	
+	public void setCheck(boolean check)
+	{
+		this.check = check;
 	}
 
 	public void setCheckBoxColor(Color checkBoxColor)
@@ -90,10 +95,18 @@ public class CheckBox extends Button
 	{
 		super.render(g);
 
+		checkBoxColor = checkBoxColor.brighter();
+		
 		Color oldColor = g.getColor();
 		g.setColor(checkBoxColor);
 		g.drawRect((int)this.checkHitbox.getX(), (int)this.checkHitbox.getY(), (int)this.checkHitbox.getWidth(), (int)this.checkHitbox.getHeight());
-
+		g.drawRect((int)this.checkHitbox.getX() + 1, (int)this.checkHitbox.getY() + 1, (int)this.checkHitbox.getWidth() - 2, (int)this.checkHitbox.getHeight() - 2);
+		
+		g.setColor(checkBoxColor);
+		g.drawRect((int)this.checkHitbox.getX() - 1, (int)this.checkHitbox.getY() - 1, (int)this.checkHitbox.getWidth() + 2, (int)this.checkHitbox.getHeight() + 2);
+//		g.setColor(new Color((float)(g.getColor().getRed() / 255), (float)(g.getColor().getGreen() / 255), (float)(g.getColor().getRed() / 255), 0.5f).brighter());
+//		g.drawRect((int)this.checkHitbox.getX() - 2, (int)this.checkHitbox.getY() - 2, (int)this.checkHitbox.getWidth() + 4, (int)this.checkHitbox.getHeight() + 4);
+		
 		if (check)
 		{
 			WarGauge.drawCenteredString(g, "\u2713", this.checkHitbox, new Font("null", Font.PLAIN, 37), checkColor);
