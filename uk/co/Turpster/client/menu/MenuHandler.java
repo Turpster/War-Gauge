@@ -13,7 +13,7 @@ import uk.co.Turpster.client.menu.options.OptionsMenuPlayerOptions;
 import uk.co.Turpster.client.menu.options.OptionsMenuType;
 import uk.co.Turpster.client.user.Session;
 
-public class MenuHandler implements Renderable, Tickable 
+public class MenuHandler implements Renderable, Tickable
 {
 	public MenuType menuType;
 	public static boolean paused = false;
