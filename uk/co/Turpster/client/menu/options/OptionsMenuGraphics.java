@@ -61,6 +61,7 @@ public class OptionsMenuGraphics extends Menu
 			this.handler.optionMenu = OptionsMenuType.MAIN;
 		}
 		if (point.intersects(checkBox.getButtonHitbox()))
+		if (point.intersects(fullscreen.getButtonHitbox()))
 		{
 			checkBox.mouseClick(e);
 			fullscreen.mouseClick(e);
@@ -82,15 +83,30 @@ public class OptionsMenuGraphics extends Menu
 		back.setTextColor(new Color(155, 0, 0));
 		back.setText("Back");
 
+		boolean tick = false;
+		
+		if (fullscreen != null)
+		{
+			tick = fullscreen.isChecked();
+		}
 		fullscreen = new CheckBox(WarGauge.getMiddleX(250) + 170, WarGauge.getMiddleY(30) - 110, 250, 30);
 		//		fullscreen = new CheckBox(WarGauge.getMiddleX((int) fullscreen.buttonHitbox.getWidth()) + 220, WarGauge.getMiddleY((int) fullscreen.buttonHitbox.getHeight()) - 230, (int) fullscreen.buttonHitbox.getWidth() + 100, (int) fullscreen.buttonHitbox.getHeight());
 		fullscreen.setText("Fullscreen");
+		fullscreen.setCheck(tick);
+		
+		float percentage = 0.5f;
+		if (slider != null)
+		{
+			percentage = slider.getPercentage();
+		}
+		
 		slider = new Slider(500, 500, 500, 30);
 		slider.setArcHeight(5);
 		slider.setArcWidth(5);
 		slider.setRectangleColor(new Color(250, 249, 215));
 		
 		checkBox = new CheckBox((WarGauge.WIDTH / 2) - 100, (WarGauge.HEIGHT) - 400, 200, 30);
+		slider.setPercentage(percentage);
 	}
 
 }
