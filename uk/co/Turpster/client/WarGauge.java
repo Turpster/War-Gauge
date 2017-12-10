@@ -200,6 +200,34 @@ public class WarGauge extends Canvas implements Runnable
 	    g.setColor(textColor);
 	    g.drawString(s, r.x + a, r.y + b);
 	}
+	public static int getMiddleY()
+	{
+		return WarGauge.HEIGHT / 2;
+	}
+	
+	public static int getMiddleY(int height)
+	{
+		return (WarGauge.HEIGHT / 2) - (height / 2);
+	}
 
+	public static int getMiddleX()
+	{
+		return WarGauge.WIDTH / 2;
+	}
+	
+	public static int getMiddleX(int width)
+	{
+		return (WarGauge.WIDTH / 2) - (width / 2);
+	}
+	
+	public static Point getMiddlePoint()
+	{
+		return new Point(WarGauge.getMiddleX(), WarGauge.getMiddleY());
+	}
+	
+	public static Point getMiddlePoint(int width, int height)
+	{
+		return new Point(WarGauge.getMiddleX(width), WarGauge.getMiddleY(height));
+	}
 }
 
