@@ -38,10 +38,16 @@ public class Button implements Renderable
 		g.setColor(rectangleColor);
 		
 		if (arcWidth != 0 || arcHeight != 0)
+		{
 			g.fillRoundRect(buttonHitbox.x, buttonHitbox.y, buttonHitbox.width, buttonHitbox.height, arcWidth, arcHeight);
+			
+			g.setColor(rectangleColor.darker().darker());
+			g.drawRoundRect(buttonHitbox.x, buttonHitbox.y, buttonHitbox.width, buttonHitbox.height, arcWidth, arcHeight);
+		}
 		else
+		{
 			g.fillRect(buttonHitbox.x, buttonHitbox.y, buttonHitbox.width, buttonHitbox.height);
-		
+		}
 		
 		/*
 		 * TODO
