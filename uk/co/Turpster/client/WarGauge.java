@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
@@ -234,18 +235,7 @@ public class WarGauge extends Canvas implements Runnable
 	{
 		if (checked)
 		{
-			window.setVisible(false);
 			
-			this.stop();
-			
-			window.dispose();
-			window.setUndecorated(true);
-			window.setBounds(300, 300, 300, 300);
-			
-			window.add(this);
-			this.start();
-			
-			window.setVisible(true);
 		}
 		else
 		{
