@@ -3,15 +3,10 @@ package uk.co.Turpster.client;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
-
-import javax.swing.BorderFactory;
-import javax.swing.JTextField;
 
 import uk.co.Turpster.client.menu.MenuHandler;
 
@@ -22,38 +17,10 @@ public class Handler implements MouseListener, MouseMotionListener
 	private MenuHandler menuHandler;
 	private WarGauge warGauge;
 	
-	private JTextField textField;
-	
 	public Handler(WarGauge warGauge)
 	{
 		this.warGauge = warGauge;
 		this.menuHandler = warGauge.menuHandler;
-		
-		textField = new JTextField("text");
-		textField.setBounds(800, 150, 350, 20);
-		textField.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-		textField.setEditable(true);
-		textField.setBackground(warGauge.getBackground());
-		textField.setForeground(warGauge.getForeground());
-		textField.addKeyListener(new KeyListener()
-		{	
-			@Override
-			public void keyTyped(KeyEvent e) {
-				textField.setText(textField.getText() + e.getKeyChar());
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 	}
 	
 	public void tick()
@@ -72,7 +39,6 @@ public class Handler implements MouseListener, MouseMotionListener
 		}
 		
 		this.overlay(g);
-		textField.printAll(g);
 	}
 	
 	private String versionText = "War Gauge Version: " + WarGauge.version + ".";
