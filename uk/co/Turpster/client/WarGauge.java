@@ -229,5 +229,28 @@ public class WarGauge extends Canvas implements Runnable
 	{
 		return new Point(WarGauge.getMiddleX(width), WarGauge.getMiddleY(height));
 	}
+
+	public synchronized void setFullscreen(boolean checked) 
+	{
+		if (checked)
+		{
+			window.setVisible(false);
+			
+			this.stop();
+			
+			window.dispose();
+			window.setUndecorated(true);
+			window.setBounds(300, 300, 300, 300);
+			
+			window.add(this);
+			this.start();
+			
+			window.setVisible(true);
+		}
+		else
+		{
+			
+		}
+	}
 }
 
