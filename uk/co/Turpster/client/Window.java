@@ -35,9 +35,6 @@ public class Window extends JFrame implements ComponentListener
 		this.setIconImage(icon);
 		
 		this.setSize(width + 31, height + 44);
-		//		this.setSize(width, height);
-		//		this.setResizable(false);
-		//		this.setUndecorated(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		game = new WarGauge(args, width, height, this);
