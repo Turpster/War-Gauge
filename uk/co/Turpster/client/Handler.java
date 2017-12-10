@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 import uk.co.Turpster.client.menu.MenuHandler;
 
-public class Handler implements MouseListener, MouseMotionListener
+public class Handler implements MouseListener, MouseMotionListener, Renderable, Tickable
 {
 	public LinkedList<Renderable> renderables = new LinkedList<Renderable>();
 	public LinkedList<Tickable> tickables = new LinkedList<Tickable>();
