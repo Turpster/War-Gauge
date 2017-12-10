@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
-public class Slider extends Button
+import uk.co.Turpster.client.Renderable;
+
+public class Slider extends Button implements Renderable
 {
 	public Rectangle sliderHitBox;
 
@@ -59,10 +61,8 @@ public class Slider extends Button
 		super.setArcHeight(0);
 		super.setArcWidth(0);
 		
-		super.setText("Render Speed");
-		
 		sliderHitBox = new Rectangle(super.buttonHitbox.x + super.buttonHitbox.width, super.buttonHitbox.y, sliderWidth, super.buttonHitbox.height - 1);
-		slider = new Rectangle((int)((super.buttonHitbox.x + super.buttonHitbox.width) + ((super.buttonHitbox.width * 2) * percentage)), 500, 5, (int) sliderHitBox.getHeight());	
+		slider = new Rectangle((int)((super.buttonHitbox.x + super.buttonHitbox.width) + ((super.buttonHitbox.width * 2) * percentage)), (int) sliderHitBox.getY(), 5, (int) sliderHitBox.getHeight());	
 	}
 	
 	public void mouseClick(MouseEvent e)
@@ -72,19 +72,13 @@ public class Slider extends Button
 		if (point.intersects(sliderHitBox))
 		{
 			int selectedPercentagePixel = (int) (point.getX() - sliderWidth);
-			this.percentage = (float) selectedPercentagePixel / sliderWidth - 1f;
+			this.percentage = (float) selectedPercentagePixel / sliderWidth - 0.69f;
 		}
 	}
 	
 	public void mouseUpdate(MouseEvent e)
 	{
-		Rectangle point = new Rectangle(e.getX() - 2, e.getY(), 1, 1);
-		
-		if (point.intersects(sliderHitBox))
-		{
-			int selectedPercentagePixel = (int) (point.getX() - sliderWidth);
-			this.percentage = (float) selectedPercentagePixel / sliderWidth - 1f;
-		}
+		mouseClick(e);
 	}
 	
 	public float getPercentage() 
@@ -114,6 +108,4 @@ public class Slider extends Button
 	{
 		this.sliderHitBox = sliderHitBox;
 	}
-
-	
 }
