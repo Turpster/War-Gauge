@@ -35,6 +35,8 @@ public class OptionsMenuGraphics extends Menu
 	@Override
 	public void render(Graphics g) 
 	{
+		defineButtons();
+
 		back.render(g);
 		slider.render(g);
 		fullscreen.render(g);
