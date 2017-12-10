@@ -95,7 +95,7 @@ public class CheckBox extends Button
 	{
 		super.render(g);
 
-		checkBoxColor = checkBoxColor.brighter();
+//		checkBoxColor = checkBoxColor.brighter();
 		
 		Color oldColor = g.getColor();
 		g.setColor(checkBoxColor);
