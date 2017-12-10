@@ -84,6 +84,10 @@ public class MenuHandler implements Renderable, Tickable
 	public void refreshSize()
 	{
 		mainMenu.defineButtons();
+		optionsMenu.defineButtons();
+		optionsGameplay.defineButtons();
+		optionsGraphics.defineButtons();
+		optionsPlayerMenu.defineButtons();
 	}
 
 	public void mouseClick(MouseEvent e) 
@@ -202,6 +206,11 @@ public class MenuHandler implements Renderable, Tickable
 				mainMenu.mouseUpdate(e);
 			}
 		}
+	}
+
+	public void setFullscreen(boolean checked) 
+	{
+		warGuage.setFullscreen(checked);
 	}
 	
 }
