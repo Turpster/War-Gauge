@@ -11,3 +11,17 @@ C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\bin\Debug\launcher.application
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.exe.manifest
 C:\Users\dicky\OneDrive\Onedrive Documents\GitHub\Multiplayer-Game-Java-Testing\uk\co\Turpster\launcher\obj\Debug\launcher.application
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\bin\Debug\launcher.exe.config
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\bin\Debug\launcher.exe.manifest
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\bin\Debug\launcher.application
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\bin\Debug\launcher.exe
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\bin\Debug\launcher.pdb
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.csprojResolveAssemblyReference.cache
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.winLauncher.resources
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.Properties.Resources.resources
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.csproj.GenerateResource.Cache
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.csproj.CoreCompileInputs.cache
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.exe.manifest
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.application
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.exe
+D:\Coding\Git-Hub\War-Gauge\uk\co\Turpster\launcher\obj\Debug\launcher.pdb
