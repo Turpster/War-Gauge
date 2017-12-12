@@ -34,13 +34,11 @@ public class ConnectionHandler implements Runnable
 			Main.getLogger().log(Logger.WARNING, "Error occured when trying to create the server socket.");
 			e.printStackTrace();
 		}
-		
-		this.start();
 	}
 	
 	public synchronized void start()
 	{
-		thread = new Thread(this);
+		thread = new Thread(this, "Connection-Handler");
 		thread.start();
 		
 		running = true;
