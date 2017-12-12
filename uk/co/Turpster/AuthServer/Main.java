@@ -30,6 +30,8 @@ public class Main
 		
 		this.dbHandler = new DatabaseHandler("localhost", username, password);
 		
+		this.dbHandler.start();
+		
 		logger.log(Logger.INFO, "Starting War-Gauge Authentication server.");
 		
 		int connectionHandlerPort = 21010;
@@ -43,7 +45,9 @@ public class Main
 		}
 		catch (SQLException e) 
 		{
-			logger.log(Logger.SEVERE, "An error has been occured while connecting to the database.");
+			logger.log(Logger.ERROR, "An error has been occured while connecting to the database.");
+			getLogger().log(Logger.SEVERE, "No longer accepting valid sessions until database is connected.");
+			connectionHandler.accept = false;
 //			e.printStackTrace();
 		}
 	}
