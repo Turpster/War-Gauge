@@ -1,6 +1,8 @@
 package uk.co.Turpster.AuthServer.connection;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -65,8 +67,12 @@ public class ConnectionHandler implements Runnable
 		{
 			try 
 			{
-				System.out.println("Waiting for connection...");
+				Main.getLogger().log(Logger.FINE, "Waiting for user...");
 				Socket connection = serversocket.accept();
+				Main.getLogger().log(Logger.FINE, "Connection recieved from connector: " + connection.getRemoteSocketAddress().toString() + ".");
+				
+				OutputStream output = this.getObjectOutputStream(connection);
+				InputStream input = this.getObjectInputStream(connection);
 				
 				if (accept)
 				{
@@ -85,4 +91,37 @@ public class ConnectionHandler implements Runnable
 			}
 		}
 	}	
+	
+	private OutputStream getObjectOutputStream(Socket connection)
+	{
+		OutputStream output = null;
+		try 
+		{
+			output = connection.getOutputStream();
+			output.flush();
+		}
+		catch (IOException e) 
+		{
+			Main.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
+			e.printStackTrace();
+		}
+		
+		return output;
+	}
+	
+	private InputStream getObjectInputStream(Socket connection)
+	{
+		InputStream input = null;
+		try 
+		{
+			input = connection.getInputStream();
+		}
+		catch (IOException e) 
+		{
+			Main.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
+			e.printStackTrace();
+		}
+		
+		return input;
+	}
 }
