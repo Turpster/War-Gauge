@@ -25,3 +25,4 @@ hs_err_pid*
 .idea/modules.xml
 *.xml
 .idea/misc.xml
+.idea/War-Gauge.iml
