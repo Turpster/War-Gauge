@@ -1,4 +1,4 @@
-package uk.co.Turpster.client;
+package uk.co.Turpster;
 
 import java.awt.Graphics;
 

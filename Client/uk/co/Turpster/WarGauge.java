@@ -68,7 +68,7 @@ public class WarGauge extends Canvas implements Runnable
 		this.window = window;
 		this.registerFonts();
 		
-		connectionMang = new ConnectionManager();
+		connectionMang = new ConnectionManager("127.0.0.1");
 
 		session = new Session(connectionMang, username, password);
 

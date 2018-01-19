@@ -1,14 +1,18 @@
 package uk.co.Turpster.AuthServer.connection;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Random;
 
+import packet.Packet;
+import packet.PacketLogin;
+import packet.PacketLoginValidate;
+import uk.co.Turpster.AuthServer.Server;
+import uk.co.Turpster.AuthServer.DatabaseHandler;
 import uk.co.Turpster.AuthServer.Logger;
-import uk.co.Turpster.AuthServer.Main;
 
 public class ConnectionHandler implements Runnable
 {
@@ -18,22 +22,29 @@ public class ConnectionHandler implements Runnable
 	
 	private ServerSocket serversocket;
 	private boolean running = false;
-	
-	public ConnectionHandler(int port)
+
+	private DatabaseHandler databaseHandler;
+
+	//Session ID - Username
+	HashMap<Integer, String> sessions = new HashMap<Integer, String>();
+
+	public ConnectionHandler(DatabaseHandler databaseHandler, int port)
 	{
+		this.databaseHandler = databaseHandler;
+
 		try 
 		{
 			serversocket = new ServerSocket(port);
 		}
 		catch (BindException e)
 		{
-			Main.getLogger().log(Logger.SEVERE, "CONNECTION IS ALREADY BINDED: PREHAPS THE SERVER IS ALREADY RUNNING?");
-			Main.getLogger().log(Logger.INFO, "Exiting program.");
+			Server.getLogger().log(Logger.SEVERE, "CONNECTION IS ALREADY BINDED: PREHAPS THE SERVER IS ALREADY RUNNING?");
+			Server.getLogger().log(Logger.INFO, "Exiting program.");
 			System.exit(-1);
 		}
 		catch (IOException e) 
 		{
-			Main.getLogger().log(Logger.WARNING, "Error occured when trying to create the server socket.");
+			Server.getLogger().log(Logger.WARNING, "Error occured when trying to create the server socket.");
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +65,7 @@ public class ConnectionHandler implements Runnable
 		}
 		catch (InterruptedException e) 
 		{
-			Main.getLogger().log(Logger.WARNING, "Error occured when trying to join connection thread");
+			Server.getLogger().log(Logger.WARNING, "Error occured when trying to join connection thread");
 			stop();
 			e.printStackTrace();
 		}
@@ -67,18 +78,60 @@ public class ConnectionHandler implements Runnable
 		{
 			try 
 			{
-				Main.getLogger().log(Logger.FINE, "Waiting for user...");
+				Server.getLogger().log(Logger.FINE, "Waiting for user...");
 				Socket connection = serversocket.accept();
-				Main.getLogger().log(Logger.FINE, "Connection recieved from connector: " + connection.getRemoteSocketAddress().toString() + ".");
+				Server.getLogger().log(Logger.FINE, "Connection recieved from connector: " + connection.getRemoteSocketAddress().toString() + ".");
 				
-				OutputStream output = this.getObjectOutputStream(connection);
-				InputStream input = this.getObjectInputStream(connection);
+				ObjectOutputStream output = new ObjectOutputStream(connection.getOutputStream());
+				output.flush();
+				ObjectInputStream input = new ObjectInputStream(connection.getInputStream());
 				
 				if (accept)
 				{
-					/*
-					 * VALIDATE USER DETAILS AND SEND IF USER DATA IS OKAY OR NOT.
-					 */
+					try
+					{
+						Packet packet = (Packet) input.readObject();
+						if (packet instanceof PacketLogin)
+						{
+							PacketLogin loginPacket = (PacketLogin) packet;
+							boolean valid = databaseHandler.isLoginValid(loginPacket.getUsername(), loginPacket.getPassword(), true);
+
+							if (valid)
+							{
+								Random random = new Random();
+
+								int id = random.nextInt(Integer.MAX_VALUE);
+
+								Server.getLogger().log(Logger.FINE, "ID: " + id);
+
+								sessions.put(id , loginPacket.getUsername());
+								output.writeObject(new PacketLoginValidate(id));
+								output.flush();
+
+								connection.close();
+							}
+							else
+							{
+								output.writeObject(new PacketLoginValidate(1));
+							}
+						}
+						else
+						{
+							Server.getLogger().log(Logger.WARNING, "Connector sent a different type of packet: " + connection.getRemoteSocketAddress().toString() + ".");
+						}
+					}
+					catch (ClassNotFoundException e)
+					{
+						e.printStackTrace();
+					}
+					catch (ClassCastException e)
+					{
+						Server.getLogger().log(Logger.WARNING, "Connector sent suspicious data: " + connection.getRemoteSocketAddress().toString() + ".");
+					}
+				}
+				else
+				{
+					output.writeObject(new PacketLoginValidate(1));
 				}
 				
 				System.out.println("Connected!");
@@ -86,7 +139,7 @@ public class ConnectionHandler implements Runnable
 			}
 			catch (IOException e)
 			{
-				Main.getLogger().log(Logger.ERROR, "There has been an error trying to establish a connection with a connector.");
+				Server.getLogger().log(Logger.ERROR, "There has been an error trying to establish a connection with a connector.");
 				e.printStackTrace();
 			}
 		}
@@ -102,7 +155,7 @@ public class ConnectionHandler implements Runnable
 		}
 		catch (IOException e) 
 		{
-			Main.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
+			Server.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
 			e.printStackTrace();
 		}
 		
@@ -118,7 +171,7 @@ public class ConnectionHandler implements Runnable
 		}
 		catch (IOException e) 
 		{
-			Main.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
+			Server.getLogger().log(Logger.ERROR, "There has been an error setting up streams with the connection.");
 			e.printStackTrace();
 		}
 		

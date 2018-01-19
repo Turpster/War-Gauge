@@ -150,14 +150,17 @@ public class MainMenu extends Menu
 			int x = 0;
 			int y = 0;
 
+			int widthMultiplier = 6;
+			int heightMultiplier = 6;
+
 			while (x <= WarGauge.WIDTH && y <= WarGauge.HEIGHT)
 			{
-				g.drawImage(background, x, y, null);
-				x += background.getWidth(null);
+				g.drawImage(background, x, y, background.getWidth(null) * widthMultiplier, background.getHeight(null) * heightMultiplier, null);
+				x += background.getWidth(null) * widthMultiplier;
 				if (x >= WarGauge.WIDTH)
 				{
 					x = 0;
-					y += background.getHeight(null);
+					y += background.getHeight(null) * heightMultiplier;
 				}
 			}
 		}

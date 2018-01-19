@@ -32,7 +32,26 @@ public class DatabaseHandler implements Runnable
 		this.password = password;
 		this.port = port;
 	}
-	
+
+	public boolean isLoginValid(String username, String password, boolean encrypted) {
+		String updatedPassword;
+
+		if (encrypted) {
+			updatedPassword = password;
+		} else {
+			updatedPassword = Server.md5Enc(password);
+		}
+
+		if (username.equals("Turpster")) {
+			if (password.equals(Server.md5Enc("'Populardude'"))) {
+				System.out.println("What's up");
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 	public synchronized void start()
 	{
 		thread = new Thread(this, "Database-Handler");
@@ -49,7 +68,7 @@ public class DatabaseHandler implements Runnable
 		} 
 		catch (InterruptedException e) 
 		{
-			Main.getLogger().log(Logger.WARNING, "Error occured when trying to join connection thread");
+			Server.getLogger().log(Logger.WARNING, "Error occured when trying to join connection thread");
 			stop();
 			
 			e.printStackTrace();

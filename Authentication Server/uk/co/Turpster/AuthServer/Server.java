@@ -1,10 +1,16 @@
 package uk.co.Turpster.AuthServer;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import uk.co.Turpster.AuthServer.connection.ConnectionHandler;
 
-public class Main
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+public class Server
 {
 	private static Logger logger;
 	private DatabaseHandler dbHandler;
@@ -13,13 +19,13 @@ public class Main
 	private String
 	username,
 	password;
-	
+
 	public static void main(String[] args)
-	{
-		new Main();
-	}
+    {
+        new Server();
+    }
 	
-	public Main()
+	public Server()
 	{
 		logger = new Logger();
 		
@@ -36,7 +42,7 @@ public class Main
 		
 		int connectionHandlerPort = 21010;
 		
-		connectionHandler = new ConnectionHandler(connectionHandlerPort);
+		connectionHandler = new ConnectionHandler(dbHandler, connectionHandlerPort);
 		connectionHandler.start();
 		
 		try 
@@ -46,8 +52,8 @@ public class Main
 		catch (SQLException e) 
 		{
 			logger.log(Logger.ERROR, "An error has been occured while connecting to the database.");
-			getLogger().log(Logger.SEVERE, "No longer accepting valid sessions until database is connected.");
-			connectionHandler.accept = false;
+//			getLogger().log(Logger.SEVERE, "No longer accepting valid sessions until database is connected.");
+//			connectionHandler.accept = false;
 //			e.printStackTrace();
 		}
 	}
@@ -56,7 +62,28 @@ public class Main
 	{
 		dbHandler.connect("name");
 	}
-	
+
+	public static String md5Enc(String target)
+	{
+		Mac sha256_HMAC = null;
+		try
+		{
+			sha256_HMAC = Mac.getInstance("HmacSHA256");
+			SecretKeySpec secretKey = new SecretKeySpec("1234".getBytes(), "HmacSHA256");
+			sha256_HMAC.init(secretKey);
+		} catch (InvalidKeyException e)
+		{
+			e.printStackTrace();
+		}
+		catch (NoSuchAlgorithmException e)
+		{
+			e.printStackTrace();
+		}
+		byte[] hash = sha256_HMAC.doFinal(target.getBytes());
+		String check = HexBin.encode(hash);
+		return new String(check);
+	}
+
 	public static Logger getLogger()
 	{
 		return logger;
