@@ -26,3 +26,5 @@ hs_err_pid*
 *.xml
 .idea/misc.xml
 .idea/War-Gauge.iml
+War-Gauge.iml
+Client/.idea/Client.iml
