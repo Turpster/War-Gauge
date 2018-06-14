@@ -25,7 +25,8 @@ public class Window extends JFrame implements ComponentListener
 		Image icon = null;
 		try 
 		{
-			icon = ImageIO.read(new File(new File("").getAbsolutePath() + "\\assets\\icon.png"));
+			System.out.println("C:\\Users\\Reece\\SkyDrive\\Documents\\GitHub\\War-Gauge\\assets\\icon.png");
+			icon = ImageIO.read(new File("C:\\Users\\Reece\\SkyDrive\\Documents\\GitHub\\War-Gauge\\assets\\icon.png"));
 		}
 		catch (IOException e) 
 		{

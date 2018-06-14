@@ -38,6 +38,8 @@ public class WarGauge extends Canvas implements Runnable
 
 	private Window window;
 	
+	public static final String assetsLoc = "C:\\Users\\Reece\\SkyDrive\\Documents\\GitHub\\War-Gauge\\assets";
+	
 	public WarGauge(String[] args, int width, int height, Window window)
 	{
 		String username = null;
@@ -179,7 +181,7 @@ public class WarGauge extends Canvas implements Runnable
 		try
 		{
 		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("assets\\DotumChe-Pixel.ttf")));
+		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(WarGauge.assetsLoc + "\\DotumChe-Pixel.ttf")));
 		}
 		catch (IOException | FontFormatException e) 
 		{

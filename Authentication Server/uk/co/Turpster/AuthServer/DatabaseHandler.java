@@ -34,6 +34,7 @@ public class DatabaseHandler implements Runnable
 	}
 
 	public boolean isLoginValid(String username, String password, boolean encrypted) {
+		@SuppressWarnings("unused")
 		String updatedPassword;
 
 		if (encrypted) {

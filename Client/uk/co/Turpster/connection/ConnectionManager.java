@@ -38,6 +38,7 @@ public class ConnectionManager
 		try
 		{
 			System.out.println("Before");
+			@SuppressWarnings("resource")
 			Socket connection = new Socket(inetAddress, port);
 			System.out.println("After");
 

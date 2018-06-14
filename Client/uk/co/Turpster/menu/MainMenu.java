@@ -39,8 +39,8 @@ public class MainMenu extends Menu
 		 */
 		File backgroundFile = null;
 		File titleFile = null;
-		backgroundFile = new File(new File("").getAbsolutePath() + "\\assets\\Main-Menu-Background.png");
-		titleFile = new File(new File("").getAbsolutePath() + "\\assets\\Title.png");
+		backgroundFile = new File(WarGauge.assetsLoc + "\\Main-Menu-Background.png");
+		titleFile = new File(WarGauge.assetsLoc + "\\Title.png");
 
 		
 		System.out.println(backgroundFile.getAbsolutePath());

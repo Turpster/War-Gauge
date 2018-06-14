@@ -2,6 +2,8 @@ package packet;
 
 public class PacketLoginValidate extends Packet
 {
+    private static final long serialVersionUID = 1L;
+	
     int SessionID;
 
     public PacketLoginValidate(int SessionID)

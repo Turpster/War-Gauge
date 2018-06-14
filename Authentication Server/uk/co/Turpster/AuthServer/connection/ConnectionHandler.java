@@ -145,6 +145,7 @@ public class ConnectionHandler implements Runnable
 		}
 	}	
 	
+	@SuppressWarnings("unused")
 	private OutputStream getObjectOutputStream(Socket connection)
 	{
 		OutputStream output = null;
@@ -162,6 +163,7 @@ public class ConnectionHandler implements Runnable
 		return output;
 	}
 	
+	@SuppressWarnings("unused")
 	private InputStream getObjectInputStream(Socket connection)
 	{
 		InputStream input = null;
